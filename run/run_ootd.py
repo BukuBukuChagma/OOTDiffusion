@@ -56,8 +56,8 @@ if __name__ == '__main__':
     if model_type == 'hd' and category != 0:
         raise ValueError("model_type \'hd\' requires category == 0 (upperbody)!")
 
-    cloth_img = Image.open(cloth_path).resize((768, 1024))
-    model_img = Image.open(model_path).resize((768, 1024))
+    cloth_img = Image.open(cloth_path).resize((768, 1024)).convert("RGB")
+    model_img = Image.open(model_path).resize((768, 1024)).convert("RGB")
     keypoints = openpose_model(model_img.resize((384, 512)))
     model_parse, _ = parsing_model(model_img.resize((384, 512)))
 
